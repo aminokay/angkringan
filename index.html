@@ -37,11 +37,15 @@
   <!-- Photo Slideshow Grid -->
   <?php
     $photosDirectory = 'aminokay/angkringan/foto'; // Change this to your actual photos directory
-    $photoCount = 64; // Number of photos in the grid
+    $photoCount = 10; // Number of photos in the grid
 
     for ($i = 1; $i <= $photoCount; $i++) {
       $photoPath = "$photosDirectory/photo$i.jpg";
       $caption = "Caption $i";
+      // Get the caption from the filename
+      $captionSegments = explode('_', $photoPath);
+      $caption = ucwords(str_replace(['-', '_'], ' ', end($captionSegments)));
+  
   ?>
       <div class="photo">
         <img src="<?php echo $photoPath; ?>" alt="Photo <?php echo $i; ?>" />
